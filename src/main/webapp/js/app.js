@@ -1,9 +1,9 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute', 'userControllers']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
-        templateUrl: 'partials/home.html'
+        templateUrl: 'partials/login.html'
     });
 }]);

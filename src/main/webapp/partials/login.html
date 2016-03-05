@@ -1,0 +1,102 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-3">
+            <h1>Welcome to cricket fantasy</h1>
+            <div>
+                <p>
+                    Description....
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5" ng-controller="LoginCtrl">
+            <div>
+                <div>
+                    <h3>Login here...</h3>
+                    <p>Enter username and password to log on:</p>
+                </div>
+                <div>
+                    <form role="form" name="loginForm">
+                        <div class="form-group"
+                             ng-class="{ 'has-error': loginForm.userName.$invalid && loginForm.userName.$dirty}">
+                            <label class="sr-only" for="login-userName">Username</label>
+                            <input type="text" name="userName" placeholder="Username" ng-model="user.userName"
+                                   class="form-control" id="login-userName" required>
+                        </div>
+                        <div class="form-group"
+                             ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
+                            <label class="sr-only" for="login-password">Password</label>
+                            <input type="password" name="password" placeholder="Password" ng-model="user.password"
+                                   class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <h3>...or login with</h3>
+                <div>
+                    <button type="submit" class="btn btn-primary">Facebook</button>
+                    <button type="submit" class="btn btn-info">Twitter</button>
+                    <button type="submit" class="btn btn-danger">Google+</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-5" ng-controller="SignUpCtrl">
+
+            <div>
+                <div>
+                    <div>
+                        <h3>Sign up here...</h3>
+                        <p>Fill the below form to get instant access:</p>
+                    </div>
+                </div>
+                <div>
+                    <form role="form" name="signUpForm">
+                        <div class="form-group"
+                             ng-class="{ 'has-error': signUpForm.firstName.$invalid && signUpForm.firstName.$dirty}">
+                            <label class="sr-only" for="firstName">First name</label>
+                            <input type="text" name="firstName" placeholder="First name"
+                                   class="form-control" id="firstName" ng-model="user.firstName" required>
+                        </div>
+                        <div class="form-group"
+                             ng-class="{ 'has-error': signUpForm.lastName.$invalid && signUpForm.lastName.$dirty}">
+                            <label class="sr-only" for="lastName">Last name</label>
+                            <input type="text" name="lastName" placeholder="Last name"
+                                   class="form-control" id="lastName" ng-model="user.lastName" required>
+                        </div>
+                        <div class="form-group"
+                             ng-class="{ 'has-error': signUpForm.userName.$invalid && signUpForm.userName.$dirty}">
+                            <label class="sr-only" for="userName">Username</label>
+                            <input type="text" name="userName" placeholder="Username"
+                                   class="form-control" id="userName" ng-model="user.userName" required>
+                        </div>
+                        <div class="form-group"
+                             ng-class="{ 'has-error': signUpForm.password.$invalid && signUpForm.password.$dirty}">
+                            <label class="sr-only" for="password">Username</label>
+                            <input type="password" name="password" placeholder="Password"
+                                   class="form-control" id="password" ng-model="user.password" required>
+                        </div>
+                        <div class="form-group"
+                             ng-class="{ 'has-error': signUpForm.email.$invalid && signUpForm.email.$dirty}">
+                            <label class="sr-only" for="email">Email</label>
+                            <input type="email" name="email" placeholder="Email"
+                                   class="form-control" id="email" ng-model="user.email" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign me up</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
