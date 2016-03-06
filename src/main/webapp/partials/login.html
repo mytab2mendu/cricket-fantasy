@@ -11,6 +11,10 @@
         </div>
     </div>
 
+    <div ng-show="message.text" class="alert" ng-class="'alert-'{{message.type}}">
+        <strong>{{message.title}}</strong>&nbsp;{{message.text}}
+    </div>
+
     <div class="row">
         <div class="col-sm-5" ng-controller="LoginCtrl">
             <div>
@@ -32,7 +36,9 @@
                             <input type="password" name="password" placeholder="Password" ng-model="user.password"
                                    class="form-control" id="login-password" required>
                         </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
+                        <button type="submit" ng-disabled="loginForm.$invalid" ng-click="login()"
+                                class="btn btn-success">Sign in
+                        </button>
                     </form>
                 </div>
             </div>
@@ -51,7 +57,9 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-5" ng-controller="SignUpCtrl">
-
+            <div ng-show="message.text" class="alert alert-{{message.type}}">
+                <strong>{{message.title}}</strong>&nbsp;{{message.text}}
+            </div>
             <div>
                 <div>
                     <div>
@@ -91,7 +99,9 @@
                             <input type="email" name="email" placeholder="Email"
                                    class="form-control" id="email" ng-model="user.email" required>
                         </div>
-                        <button type="submit" class="btn btn-success">Sign me up</button>
+                        <button type="submit" ng-disabled="signUpForm.$invalid" ng-click="register()"
+                                class="btn btn-success">Sign me up
+                        </button>
                     </form>
                 </div>
             </div>
