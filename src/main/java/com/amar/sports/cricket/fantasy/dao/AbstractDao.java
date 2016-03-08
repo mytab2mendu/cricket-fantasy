@@ -1,10 +1,13 @@
 package com.amar.sports.cricket.fantasy.dao;
 
+import com.amar.sports.cricket.fantasy.domain.Entity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-public abstract class AbstractDao<T> {
+@Repository
+public abstract class AbstractDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -13,15 +16,15 @@ public abstract class AbstractDao<T> {
         return sessionFactory.getCurrentSession();
     }
 
-    public void persist(T t) {
-        getSession().persist(t);
+    public void persist(Entity entity) {
+        getSession().persist(entity);
     }
 
-    public void save(T t) {
-        getSession().saveOrUpdate(t);
+    public void save(Entity entity) {
+        getSession().saveOrUpdate(entity);
     }
 
-    public void delete(T t) {
-        getSession().delete(t);
+    public void delete(Entity entity) {
+        getSession().delete(entity);
     }
 }

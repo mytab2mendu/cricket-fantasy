@@ -2,23 +2,21 @@ package com.amar.sports.cricket.fantasy.domain;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "user")
-public class User {
+public class User extends Entity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(nullable = false, columnDefinition = "varchar(15)")
+    @Column(name = "first_name", nullable = false, columnDefinition = "varchar(15)")
     private String firstName;
 
-    @Column(nullable = false, columnDefinition = "varchar(15)")
+    @Column(name = "last_name", nullable = false, columnDefinition = "varchar(15)")
     private String lastName;
 
     @Column(nullable = false, unique = true, columnDefinition = "varchar(15)")
-    private String userName;
+    private String username;
 
     @Column(nullable = false, columnDefinition = "varchar(15)")
     private String password;
@@ -26,16 +24,12 @@ public class User {
     @Column(nullable = false, columnDefinition = "varchar(30)")
     private String email;
 
-    @Column(columnDefinition = "varchar(5) default 'user'")
-    private String type;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", table = "role", referencedColumnName = "id", nullable = false, updatable = false)}
+    )
+    private Set<Role> roles = new HashSet<>();
 
     public String getFirstName() {
         return firstName;
@@ -53,12 +47,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -77,11 +71,11 @@ public class User {
         this.email = email;
     }
 
-    public String getType() {
-        return type;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
